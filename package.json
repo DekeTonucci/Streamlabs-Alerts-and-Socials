@@ -1,0 +1,29 @@
+{
+  "name": "streamlabs-alerts-and-socials",
+  "version": "1.0.0",
+  "description": "An application to create a wiget for streamers use streamlabs webhooks and the users socials.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DekeTonucci/Streamlabs-Alerts-and-Socials.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DekeTonucci/Streamlabs-Alerts-and-Socials/issues"
+  },
+  "homepage": "https://github.com/DekeTonucci/Streamlabs-Alerts-and-Socials#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.18",
+    "passport": "^0.4.1",
+    "passport-oauth": "^1.0.0",
+    "passport-streamlabs": "^1.0.3",
+    "request": "^2.88.2"
+  }
+}
