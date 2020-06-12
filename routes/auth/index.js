@@ -13,11 +13,15 @@ module.exports = (app) => {
     }),
     function (req, res) {
       // console.log('logged in', req.user.token);
-      res.redirect('/');
+      res.redirect('/dashboard');
 
       // At this point, the authentication was successful.
     }
   );
+
+  app.get('/auth/current_user', (req, res) => {
+    res.send(req.user);
+  });
 
   app.get('/logout', function (req, res) {
     req.logout();
