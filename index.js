@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
-const path = require('path');
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = 5000 || process.env.PORT;
 
 const { MONGO_URI, SESSION_SECRET } = require('./config/keys');
 
