@@ -1,0 +1,23 @@
+for: "twitch_account"
+    "type": "follow",
+    "type": "subscription",
+    "type": "resub",
+    "type": "host",
+    "type": "raids",
+    "type": "bits",
+
+for: "youtube_account"
+    "type": "superchat", // What is superchat? Kinda like bits in a way
+    "type": "subscription", // = Member is the same as twitch subscriptions
+    "type": "follow", // Supscription
+
+
+for: "mixer_account"
+    "type": "follow",
+    "type": "subscription",
+    "type": "resub",
+    "type": "host",
+    "type": "sticker", // embers or sparks or both?
+
+for: "streamlabs
+    "type": "donation"

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+  --twitter-color: #00acee;
+  --twitter-border-color: #00acee30;
+  --twitch-color: #6441a5;
+  --twitch-border-color: #6441a530;
+  --youtube-color: #ff0000;
+  --youtube-border-color: #ff000030;
+  --follow-color: #ff91e5;
+  --follow-border-color: #ff91e530;
+  --star-color: #ff00ff;
+  --star-border-color: #ff00ff30;
+  --length-of-popup: 5s;
+}
+
+body {
+  padding: 10px;
+  margin: 0;
+  background-color: yellowgreen;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#test {
+  position: absolute;
+  top: 150px;
+}
+#test2 {
+  position: absolute;
+  top: 175px;
+}
+
+.contaienr {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+}
+.notification {
+  opacity: 0;
+  overflow: hidden;
+  height: 50px;
+  background-color: white;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 0px;
+  max-width: 600px;
+  min-width: 300px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.messageContainer {
+  display: inline;
+}
+
+.twitter {
+  color: var(--twitter-color);
+}
+.twitter-bg {
+  background-color: var(--twitter-color);
+  box-shadow: 4px 4px 0px 2px var(--twitter-border-color);
+  color: white;
+}
+.twitch {
+  color: var(--twitch-color);
+}
+.twitch-bg {
+  background-color: var(--twitch-color);
+  box-shadow: 4px 4px 0px 2px var(--twitch-border-color);
+  color: white;
+}
+.youtube {
+  color: var(--youtube-color);
+}
+.youtube-bg {
+  background-color: var(--youtube-color);
+  box-shadow: 4px 4px 0px 2px var(--youtube-border-color);
+  color: white;
+}
+.heart {
+  color: var(--follow-color);
+}
+.heart-bg {
+  background-color: var(--follow-color);
+  box-shadow: 4px 4px 0px 2px var(--follow-border-color);
+  color: white;
+}
+.star {
+  color: var(--star-color);
+}
+.star-bg {
+  background-color: var(--star-color);
+  box-shadow: 4px 4px 0px 2px var(--star-border-color);
+  color: white;
+}
+
+.fa-lg {
+  float: left;
+  font-size: 40px;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 20px;
+  margin: -10px 0px 0px 0px;
+  margin-right: 10px;
+}
+
+.text {
+  margin-left: 10px;
+  white-space: nowrap;
+  text-align: left;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fadeInOut {
+  animation: fade var(--length-of-popup) 1 ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
