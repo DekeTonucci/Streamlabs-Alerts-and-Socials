@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* !! Your custom CSS Below !!!!!!!!!!!!!!!!!!! 
+MUST MANUALLY RESTART REACT SERVER UPON CHANGES 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.content-area {
+  /* 60px = header/nav height*/
+  min-height: calc(100vh - 60px);
+}
