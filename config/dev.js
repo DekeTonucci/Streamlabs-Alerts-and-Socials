@@ -2,6 +2,8 @@ module.exports = {
   STREAMLABS_CLIENT_ID: 'DrE9qyo15kp0cuhxfoBUolb6HoEAF2BXk1vCfbyK',
   STREAMLABS_CLIENT_SECRET: '7neHRtALuSfEVdyJH3WG5fYZloETwG2cGVoE8V8C',
   STREAMLABS_CALLBACK_URL: 'http://localhost:3000/auth/streamlabs/callback',
+  STREAMLABS_SOCKET:
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IjA5ODIyMkU5MjY2QzgyODMxMTJCIiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiMTcwODk0NjczIn0.79Q1LYxX4b_cGR6fTO1fsnuinAGr2EhBt0Y-py2Ex_M',
   MONGO_URI: 'mongodb://127.0.0.1:27017/social-alerts',
   SESSION_SECRET: 'YOUR_SESSION_SECRET',
 };
