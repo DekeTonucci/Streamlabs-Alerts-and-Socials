@@ -1,13 +1,29 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+var express = require('express');
+var http = require('http');
+var cors = require('cors');
+var mongoose = require('mongoose');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const passport = require('passport');
 
-const app = express();
-const PORT = 5000 || process.env.PORT;
+// const { StreamlabsClient } = require('streamlabs-ws-client'); // Only does TWITCH
 
-const { MONGO_URI, SESSION_SECRET } = require('./config/keys');
+const app = express();
+app.use(cors());
+
+var server = http.createServer(app);
+// Pass a http.Server instance to the listen method
+var io = require('socket.io');
+io = io.listen(server);
+
+// The server should start listening
+server.listen(5000);
+
+const {
+  MONGO_URI,
+  SESSION_SECRET,
+  STREAMLABS_SOCKET,
+} = require('./config/keys');
 
 // Connect MongoDB with Mongoose
 mongoose.connect(MONGO_URI, {
@@ -21,7 +37,6 @@ connection.once('open', () =>
 );
 
 app.use('/public', express.static('public'));
-
 app.use(
   session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false })
 );
@@ -64,4 +79,63 @@ require('./routes/auth')(app);
 // }
 
 // Express Server Start
-app.listen(PORT, () => console.log(`Streamlytics listening on port ${PORT}!`));
+// app.listen(PORT, () => console.log(`Streamlytics listening on port ${PORT}!`));
+
+/* ********************************************************** */
+/*                 Socket logic starts here										*/
+/* ********************************************************** */
+let socketID;
+let streamlabs;
+io.use(function (socket, next) {
+  // console.log('Query: ', socket.handshake.query);
+  // return the result of next() to accept the connection.
+  console.log(socket.handshake.query.slkey);
+  if (socket.handshake.query.slkey) {
+    socket.streamlabsKey = socket.handshake.query.slkey;
+    return next();
+  }
+  // call next() with an Error if you need to reject the connection.
+  next(new Error('Authentication error'));
+});
+
+io.on('connection', (socket) => {
+  // console.log(socket.request);
+  console.log('Connected user...', socket.streamlabsKey);
+  socketID = socket.client.id;
+
+  // Connect to streamlabs socket
+  const ioClient = require('socket.io-client');
+  streamlabs = ioClient(
+    `https://sockets.streamlabs.com?token=${socket.streamlabsKey}`,
+    {
+      transports: ['websocket'],
+    }
+  );
+  streamlabs.on('event', (eventData) => {
+    if (!eventData.for && eventData.type === 'donation') {
+      //code to handle donation events
+      console.log(eventData.message);
+    }
+    if (eventData.for === 'twitch_account') {
+      switch (eventData.type) {
+        case 'follow':
+          //code to handle follow events
+          console.log(eventData.message);
+          break;
+        case 'subscription':
+          //code to handle subscription events
+          console.log(eventData.message);
+          break;
+        default:
+          //default case
+          console.log(eventData.message);
+      }
+    }
+  });
+
+  // show disconnecting socketid
+  socket.on('disconnect', () => {
+    console.log('disconnect user...', socketID);
+    streamlabs.disconnect(true);
+  });
+});
